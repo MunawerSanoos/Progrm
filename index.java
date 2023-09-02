@@ -23,3 +23,13 @@ public:
         // JobSeeker access code here
     }
 };
+
+
+class ConsultantCalendar : public QWidget {
+    // Code for calendar interface here
+};
+
+class JobSeekerInterface : public QWidget {
+    // Code for job seeker interface here
+};
+
