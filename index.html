@@ -1,0 +1,23 @@
+
+%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Appointments</title>
+</head>
+<body>
+    <h1>Schedule Appointments</h1>
+    <form action="schedule" method="post">
+        <input type="text" name="appointment" placeholder="Enter appointment" required>
+        <button type="submit">Schedule</button>
+    </form>
+    
+    <h2>Scheduled Appointments</h2>
+    <ul>
+        <c:forEach items="${appointments}" var="appointment">
+            <li>${appointment}</li>
+        </c:forEach>
+    </ul>
+</body>
+</html>
