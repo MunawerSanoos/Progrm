@@ -202,3 +202,38 @@ class ConsultantUtilizationReportFactory implements ReportFactory {
 }
 
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/schedule")
+public class ScheduleServlet extends HttpServlet {
+    private List<String> appointments = new ArrayList<>();
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("appointments", appointments);
+        request.getRequestDispatcher("schedule.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String appointment = request.getParameter("appointment");
+        if (isValid(appointment)) {
+            appointments.add(appointment);
+        }
+        doGet(request, response);
+    }
+
+    private boolean isValid(String appointment) {
+        // Implement validation logic here
+        return appointment != null && !appointment.trim().isEmpty();
+    }
+}
+
+
